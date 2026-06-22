@@ -1,0 +1,14 @@
+[
+  { "id": "deerclops", "name": "Deerclops", "season": "Mùa đông", "location": "Mặt đất", "tips": "Đánh 2 phát né. Đòn quét phá công trình. Mắt → Eyebrella (mũ chống nóng số 1)." },
+  { "id": "bearger", "name": "Bearger", "season": "Mùa thu", "location": "Mặt đất", "tips": "Dẫn vào rừng farm gỗ. Đánh 2 phát né quạt. Rơi 8 thịt + Lông." },
+  { "id": "moose", "name": "Moose/Goose", "season": "Mùa xuân", "location": "Mặt đất gần nước", "tips": "Né đòn lao. Hồi máu khi nổi điên → đẻ Mossling. Rơi 4 thịt + 3 dùi trống." },
+  { "id": "dragonfly", "name": "Dragonfly", "season": "Mùa hè", "location": "Đấu trường Lava (Sa mạc)", "tips": "Mang 10+ thuốc hồi máu. Nổi điên khi HP thấp. Rơi 8 thịt + Vảy (giáp lửa)." },
+  { "id": "beequeen", "name": "Bee Queen", "season": "Bất kỳ", "location": "Rừng ong", "tips": "Boss khó. Mang giáp + thuốc + mìn ong. Rơi Royal Jelly + công thức Bundling Wrap." },
+  { "id": "klaus", "name": "Klaus", "season": "Mùa đông", "location": "Mặt đất (ngẫu nhiên)", "tips": "Mở bằng gạc hươu. Rơi ngọc + loot. Phase 2 khó hơn, né cẩn thận." },
+  { "id": "antlion", "name": "Antlion", "season": "Mùa hè", "location": "Sa mạc Oasis", "tips": "Gây sụt đất nếu bơ. Giết hoặc cho đồ chơi. Rơi 4 thịt + Đồ trang sức." },
+  { "id": "toadstool", "name": "Toadstool", "season": "Bất kỳ", "location": "Hang động", "tips": "Mọc từ nấm khổng lồ. Đòn bào tử độc. Mang mặt nạ khí hoặc 20+ thuốc hồi máu." },
+  { "id": "malbatross", "name": "Malbatross", "season": "Bất kỳ", "location": "Đại dương", "tips": "Boss biển. Dùng súng lao. Rơi 8 thịt + Mỏ Malbatross (thuyền siêu tốc)." },
+  { "id": "stalker", "name": "Ancient Fuelweaver", "season": "Bất kỳ", "location": "Atrium (Tàn tích)", "tips": "Boss cuối game. Cần: Weather Pain, Nightmare Amulet, Lazy Explorer. Cơ chế khiên phức tạp." },
+  { "id": "minotaur", "name": "Ancient Guardian", "season": "Bất kỳ", "location": "Mê cung Tàn tích", "tips": "Canh Ancient Pseudoscience Station. Đánh 1-2 phát né. Rơi Sừng Guardian." },
+  { "id": "crabking", "name": "Crab King", "season": "Bất kỳ", "location": "Đại dương (ngọc trai)", "tips": "Cần ngọc trai từ Crabby Hermit. Vỏ bảo vệ — phá bằng bom hoặc đại bác." }
+]

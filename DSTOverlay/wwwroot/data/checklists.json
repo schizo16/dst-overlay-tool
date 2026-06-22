@@ -1,0 +1,23 @@
+[
+  { "text": "Ngày 1-5: Nhặt cỏ, cành cây, đá lửa, quả mọng", "autoCheck": false },
+  { "text": "Ngày 1-5: Chặt 3 cây lấy gỗ, làm rìu + cuốc + đuốc", "autoCheck": false },
+  { "text": "Ngày 5+: Tìm vàng (đào mộ hoặc núi đá), làm Science Machine", "autoCheck": false },
+  { "text": "Ngày 5+: Làm ba lô (ưu tiên số 1)", "autoCheck": false },
+  { "text": "Ngày 10+: Làm Alchemy Engine + Crock Pot + Drying Rack", "autoCheck": false },
+  { "text": "Ngày 10+: Thám hiểm bản đồ — tìm Pig King, núi đá, đầm lầy", "autoCheck": false },
+  { "text": "Ngày 15+: Chuẩn bị mùa đông — Thermal Stone, mũ len, đồ ấm", "auto": "winter_ready", "autoCheck": true },
+  { "text": "Ngày 15+: Dự trữ 60+ gỗ, 40+ thức ăn khô", "autoCheck": false },
+  { "text": "Mùa thu: Giết Bearger (ngày 20-25)", "auto": "killed_bearger", "autoCheck": true },
+  { "text": "Mùa đông: Giết Deerclops (ngày 30+) → lấy Eyebrella", "auto": "killed_deerclops", "autoCheck": true },
+  { "text": "Mùa đông: Đào băng 40+ viên, làm Ice Box", "autoCheck": false },
+  { "text": "Mùa xuân: Chuẩn bị đồ chống mưa (Ô, Mũ mưa, Eyebrella)", "autoCheck": false },
+  { "text": "Mùa xuân: Giết Moose/Goose", "auto": "killed_moose", "autoCheck": true },
+  { "text": "Mùa xuân: Làm thuyền, thám hiểm đại dương", "autoCheck": false },
+  { "text": "Mùa hè: Làm Endothermic Fire Pit", "autoCheck": false },
+  { "text": "Mùa hè: Xử lý Antlion (cho đồ chơi hoặc giết)", "autoCheck": false },
+  { "text": "Khám phá Lunar Island", "autoCheck": false },
+  { "text": "Khám phá Hang động + Tàn tích Ruins", "autoCheck": false },
+  { "text": "Tìm Ancient Pseudoscience Station", "autoCheck": false },
+  { "text": "Giết Ancient Fuelweaver", "auto": "killed_stalker", "autoCheck": true },
+  { "text": "Lên đồ Celestial Champion (Lunar Questline)", "autoCheck": false }
+]

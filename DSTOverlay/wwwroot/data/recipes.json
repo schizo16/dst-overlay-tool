@@ -1,0 +1,20 @@
+[
+  { "name": "Thịt viên (Meatballs)", "ingredients": ["meat","ice","ice","ice"], "effect": "+62.5 Đói, +5 Máu, +5 Tinh thần", "recipe": "1 thịt + 3 băng/đồ nhồi" },
+  { "name": "Thịt xông khói & Trứng (Bacon and Eggs)", "ingredients": ["egg","egg","meat","meat"], "effect": "+75 Đói, +20 Máu, +5 Tinh thần", "recipe": "2 trứng + 2 thịt" },
+  { "name": "Giăm bông mật ong (Honey Ham)", "ingredients": ["meat","meat","honey","honey"], "effect": "+75 Đói, +30 Máu, +5 Tinh thần", "recipe": "2 thịt + 2 mật ong" },
+  { "name": "Que cá (Fishsticks)", "ingredients": ["fish","fish","twigs","twigs"], "effect": "+37.5 Đói, +40 Máu, +5 Tinh thần", "recipe": "1 cá + 1 cành cây + 2 đồ nhồi" },
+  { "name": "Bánh Pierogi", "ingredients": ["egg","meat","carrot","mushroom"], "effect": "+37.5 Đói, +40 Máu, +5 Tinh thần", "recipe": "1 trứng + 1 thịt + 1 rau + 1 đồ nhồi" },
+  { "name": "Bánh Rồng (Dragon Pie)", "ingredients": ["dragonfruit","twigs","twigs","twigs"], "effect": "+75 Đói, +40 Máu, +5 Tinh thần", "recipe": "1 thanh long + 3 cành cây" },
+  { "name": "Bánh nướng bơ (Butter Muffin)", "ingredients": ["butterflywings","carrot","twigs","twigs"], "effect": "+37.5 Đói, +20 Máu, +5 Tinh thần", "recipe": "1 cánh bướm + 1 rau + 2 cành cây" },
+  { "name": "Ớt cay (Spicy Chili)", "ingredients": ["meat","meat","carrot","tomato"], "effect": "+37.5 Đói, +20 Máu, -5 Tinh thần", "recipe": "2 thịt + 1 rau + 1 cà chua" },
+  { "name": "Bữa tối Gà Tây (Turkey Dinner)", "ingredients": ["drumstick","drumstick","meat","carrot"], "effect": "+75 Đói, +20 Máu, +5 Tinh thần", "recipe": "2 dùi trống + 1 thịt + 1 rau" },
+  { "name": "Bánh Ếch (Froggle Bunwich)", "ingredients": ["frog_legs","carrot","twigs","twigs"], "effect": "+37.5 Đói, +20 Máu, +5 Tinh thần", "recipe": "1 đùi ếch + 1 rau + 2 cành cây" },
+  { "name": "Kem (Ice Cream)", "ingredients": ["ice","ice","egg","honey"], "effect": "+25 Đói, +0 Máu, +50 Tinh thần", "recipe": "1 băng + 1 sữa + 1 đồ ngọt" },
+  { "name": "Kem dưa (Melonsicle)", "ingredients": ["watermelon","ice","twigs","twigs"], "effect": "+12.5 Đói, +3 Máu, +20 Tinh thần", "recipe": "1 dưa hấu + 1 băng + 2 cành cây" },
+  { "name": "Đồ ăn vặt (Trail Mix)", "ingredients": ["berries","berries","ice","ice"], "effect": "+12.5 Đói, +30 Máu, +5 Tinh thần", "recipe": "2 quả mọng + 2 băng" },
+  { "name": "Rau hầm (Ratatouille)", "ingredients": ["carrot","carrot","carrot","carrot"], "effect": "+25 Đói, +3 Máu, +5 Tinh thần", "recipe": "3+ rau củ bất kỳ" },
+  { "name": "Cà tím nhồi (Stuffed Eggplant)", "ingredients": ["eggplant","eggplant","twigs","twigs"], "effect": "+37.5 Đói, +3 Máu, +5 Tinh thần", "recipe": "1 cà tím + 3 đồ nhồi" },
+  { "name": "Thịt viên mật ong (Honey Nuggets)", "ingredients": ["honey","meat","twigs","twigs"], "effect": "+37.5 Đói, +20 Máu, +5 Tinh thần", "recipe": "1 mật ong + 1 thịt + 2 đồ nhồi" },
+  { "name": "Mứt (Fist Full of Jam)", "ingredients": ["berries","berries","berries","berries"], "effect": "+37.5 Đói, +3 Máu, +5 Tinh thần", "recipe": "3 quả mọng + 1 đồ nhồi" },
+  { "name": "Súp Mandrake", "ingredients": ["mandrake","carrot","carrot","carrot"], "effect": "+100 Đói, +60 Máu, +5 Tinh thần", "recipe": "1 mandrake + 3 đồ nhồi" }
+]

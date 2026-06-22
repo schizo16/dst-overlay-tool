@@ -1,0 +1,187 @@
+[
+  {
+    "id": "wilson",
+    "name": "Wilson",
+    "difficulty": "Dễ",
+    "hp": 150, "hunger": 150, "sanity": 200,
+    "skill": "Mọc râu — cạo lấy Thịt tóc (dùng làm đồ nhồi, hồi HP)",
+    "tips": [
+      "Nhân vật cân bằng nhất, phù hợp người mới",
+      "Cạo râu mỗi 3-4 ngày để lấy tóc (dùng làm thuốc hồi máu hoặc đồ nhồi)",
+      "Râu mùa đông mọc nhanh hơn, giữ ấm tốt hơn",
+      "Không có điểm yếu đặc biệt — chơi được mọi chiến thuật",
+      "Ưu tiên: khám phá bản đồ sớm, farm tài nguyên"
+    ]
+  },
+  {
+    "id": "willow",
+    "name": "Willow",
+    "difficulty": "Dễ",
+    "hp": 150, "hunger": 150, "sanity": 120,
+    "skill": "Bật lửa — đốt cháy mọi thứ, miễn nhiễm sát thương lửa",
+    "tips": [
+      "Có Bật lửa vô hạn — không cần làm đuốc những ngày đầu",
+      "Miễn nhiễm sát thương lửa — có thể đốt kẻ thù",
+      "Tinh thần thấp hơn (120) — dễ bị mất tinh thần",
+      "Mùa hè: lợi thế lớn, không sợ nóng",
+      "Cẩn thận: dễ đốt cháy base nếu bất cẩn",
+      "Nên farm Mật ong và Nấm xanh để hồi tinh thần"
+    ]
+  },
+  {
+    "id": "wolfgang",
+    "name": "Wolfgang",
+    "difficulty": "Trung bình",
+    "hp": 200, "hunger": 200, "sanity": 200,
+    "skill": "Lực sĩ — càng đói càng yếu, càng no càng mạnh",
+    "tips": [
+      "Khi no (300+ đói): x2 sát thương, giảm 10% sát thương nhận",
+      "Khi đói (dưới 100): giảm 25% sát thương, tăng 10% sát thương nhận",
+      "Luôn giữ đói trên 200 để max sức mạnh",
+      "Ăn nhiều gấp 1.5 lần nhân vật thường — cần nguồn thức ăn lớn",
+      "Nên farm Thịt khô, Honey Ham, Meatballs",
+      "Sát thương cao nhất game — đánh boss dễ nhất"
+    ]
+  },
+  {
+    "id": "wanda",
+    "name": "Wanda",
+    "difficulty": "Khó",
+    "hp": 150, "hunger": 150, "sanity": 200,
+    "skill": "Đồng hồ — HP càng thấp sát thương càng cao, có đồng hồ dịch chuyển",
+    "tips": [
+      "Cơ chế độc đáo: sát thương tăng khi HP giảm",
+      "Càng già (càng chơi lâu) càng mạnh, nhưng HP max giảm dần",
+      "Đồng hồ Alarming Clock: vũ khí ranged, đánh xa được",
+      "Đồng hồ Backtrek Watch: teleport về điểm đã đánh dấu",
+      "Khó chơi với người mới — cần quản lý HP và đồng hồ",
+      "Mạnh nhất ở cuối game khi HP thấp + đồng hồ đầy đủ"
+    ]
+  },
+  {
+    "id": "wendy",
+    "name": "Wendy",
+    "difficulty": "Dễ",
+    "hp": 150, "hunger": 150, "sanity": 200,
+    "skill": "Abigail — em gái ma, giúp đánh quái",
+    "tips": [
+      "Triệu hồi Abigail bằng hoa (nở vào ban đêm hoặc gần xác chết)",
+      "Abigail đánh AoE — farm quần thể rất nhanh (ong, nhện, chim)",
+      "Abigail yếu ban ngày, mạnh nhất ban đêm và gần chết",
+      "Sát thương của Wendy giảm 25% — bù lại Abigail gánh team",
+      "Dùng Abigail để farm Spiders, Bees, Swamp tentacles",
+      "Nên cho Abigail ăn thuốc hồi máu (dùng hoa hoặc thuốc)"
+    ]
+  },
+  {
+    "id": "wx78",
+    "name": "WX-78",
+    "difficulty": "Trung bình",
+    "hp": 150, "hunger": 150, "sanity": 150,
+    "skill": "Robot — ăn Bánh răng để nâng cấp, bị nước làm hỏng",
+    "tips": [
+      "Ăn Bánh răng (Gears): +20 HP max, +6.25 Đói max, +13.3 Tinh thần max (tối đa 15 lần)",
+      "Max stats: 400 HP, 300 Đói, 300 Tinh thần — mạnh nhất game",
+      "Bị ướt (mưa, ẩm) → mất HP và giảm tốc độ — cần đồ chống ướt",
+      "Mùa xuân là mùa yếu nhất — ưu tiên Eyebrella/Ô",
+      "Nên farm Clockwork Knights/Rooks/Bishops ở rocky biome",
+      "Sét đánh → hồi HP + tăng tốc — đứng gần Lightning Rod có chủ đích"
+    ]
+  },
+  {
+    "id": "wickerbottom",
+    "name": "Wickerbottom",
+    "difficulty": "Trung bình",
+    "hp": 150, "hunger": 150, "sanity": 250,
+    "skill": "Sách — chế tạo sách đặc biệt, không cần Science Machine",
+    "tips": [
+      "Không cần Science Machine — đã biết hết recipes cơ bản",
+      "Cần Alchemy Engine để chế tạo đồ cao cấp",
+      "Sách: Applied Horticulture (farm cây), Birds of the World (gọi chim)",
+      "Sách: On Tentacles (gọi xúc tu), The End is Nigh (gọi sét)",
+      "Tinh thần cao (250) — chịu được ác mộng lâu",
+      "Yếu: không ngủ được (không dùng giường), thức ăn thối hồi ít hơn",
+      "Mạnh nhất early game — có thể farm nhanh gấp đôi người thường"
+    ]
+  },
+  {
+    "id": "wigfrid",
+    "name": "Wigfrid",
+    "difficulty": "Trung bình",
+    "hp": 200, "hunger": 150, "sanity": 120,
+    "skill": "Valkyrie — đánh nhau hồi máu + tinh thần, chỉ ăn thịt",
+    "tips": [
+      "Đánh quái hồi 25% sát thương thành máu và tinh thần",
+      "Chỉ ăn được thịt — cần nguồn thịt ổn định",
+      "Giáp và mũ chiến binh (Battle Spear, Battle Helm) — chế tạo dễ",
+      "Battle Spear: 47.25 sát thương (gấp 1.5 giáo thường)",
+      "Battle Helm: 80% giảm sát thương — siêu trâu",
+      "Nên farm: Spiders, Koalefant, Beefalo, các boss",
+      "Đầu game: đi săn ngay, đừng ngồi farm cây"
+    ]
+  },
+  {
+    "id": "woodie",
+    "name": "Woodie",
+    "difficulty": "Trung bình",
+    "hp": 150, "hunger": 150, "sanity": 200,
+    "skill": "Tiều phu — chặt cây siêu nhanh, biến thành Hải ly/quái vật",
+    "tips": [
+      "Chặt cây nhanh gấp 3 — farm gỗ số 1 game",
+      "Rìu Lucy: nói chuyện được, chặt cây siêu nhanh",
+      "Khi chặt quá nhiều → biến thành Hải ly (Werebeaver)",
+      "Werebeaver: đánh mạnh, farm gỗ siêu tốc, nhưng không mặc giáp được",
+      "Dạng Werebeaver mất tinh thần theo thời gian → hết thì biến lại",
+      "Cần kiểm soát: đừng chặt quá nhiều cùng lúc nếu chưa sẵn sàng",
+      "Mùa thu: lợi thế lớn — farm cả rừng trong 1 ngày"
+    ]
+  },
+  {
+    "id": "wurt",
+    "name": "Wurt",
+    "difficulty": "Khó",
+    "hp": 150, "hunger": 150, "sanity": 200,
+    "skill": "Người ếch — xây dựng đế chế ếch, sống dưới nước",
+    "tips": [
+      "Không sợ ẩm ướt — lợi thế mùa xuân",
+      "Có thể xây Merm King và thuần hóa Merms",
+      "Merms là lính đánh thuê — farm gỗ, đá, đánh quái",
+      "Chỉ ăn được rau và cá — không ăn thịt",
+      "Khó early game vì hạn chế thức ăn",
+      "Nên: farm cá, trồng rau, xây Merm King sớm",
+      "Mạnh nhất late game khi có đạo quân Merm"
+    ]
+  },
+  {
+    "id": "wortox",
+    "name": "Wortox",
+    "difficulty": "Trung bình",
+    "hp": 150, "hunger": 150, "sanity": 200,
+    "skill": "Quỷ — nhảy dịch chuyển, ăn linh hồn hồi máu",
+    "tips": [
+      "Nhảy dịch chuyển (soul hop) — di chuyển siêu nhanh",
+      "Thu thập Linh hồn từ xác chết (quái vật hoặc động vật)",
+      "Ăn linh hồn: +20 HP, nhưng -5 Tinh thần",
+      "Có thể hồi máu cho đồng đội bằng linh hồn",
+      "Không ăn được đồ ăn thường — chỉ ăn linh hồn",
+      "Dễ chết nếu không có linh hồn dự trữ",
+      "Nên: luôn giữ 5+ linh hồn, farm quái thường xuyên"
+    ]
+  },
+  {
+    "id": "wormwood",
+    "name": "Wormwood",
+    "difficulty": "Trung bình",
+    "hp": 150, "hunger": 150, "sanity": 200,
+    "skill": "Cây — tự trồng mình, không cần ăn, sợ lửa",
+    "tips": [
+      "Không ăn được — hồi HP bằng phân bón và đứng dưới nắng",
+      "Tự trồng: gieo hạt, bón phân → mọc cây (lấy gỗ, thức ăn)",
+      "Bị sát thương lửa x3 — tránh xa lửa và mùa hè",
+      "Có thể trồng vũ khí từ hạt (trap, lance)",
+      "Mùa xuân: hồi máu nhanh khi mưa",
+      "Mùa hè: yếu nhất — cần đồ chống nóng và tránh cháy rừng",
+      "Nên: farm phân bón, trồng cây ăn quả, làm Brightsmithy"
+    ]
+  }
+]

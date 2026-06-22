@@ -1,0 +1,55 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', sans-serif; background: rgba(15, 15, 25, 0.92); color: #ddd; overflow: hidden; user-select: none; }
+#dragbar { position: fixed; top: 0; left: 0; right: 0; height: 24px; background: rgba(240,192,64,0.15); color: #f0c040; font-size: 11px; display: flex; align-items: center; padding: 0 10px; cursor: grab; z-index: 100; user-select: none; border-bottom: 1px solid rgba(240,192,64,0.2); }
+#dragbar:active { cursor: grabbing; }
+#app { display: flex; height: 100vh; padding-top: 24px; }
+#sidebar { width: 72px; background: rgba(8, 8, 16, 0.95); display: flex; flex-direction: column; padding: 8px 0; gap: 2px; flex-shrink: 0; }
+.tab-btn { padding: 14px 4px; text-align: center; cursor: pointer; font-size: 11px; color: #777; border-left: 3px solid transparent; transition: all 0.15s; line-height: 1.3; }
+.tab-btn:hover { color: #fff; background: rgba(255,255,255,0.04); }
+.tab-btn.active { color: #f0c040; border-left-color: #f0c040; background: rgba(240,192,64,0.08); }
+#content { flex: 1; padding: 14px 16px; overflow-y: auto; min-width: 0; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+h2 { font-size: 15px; color: #f0c040; margin-bottom: 10px; border-bottom: 1px solid #2a2a3a; padding-bottom: 6px; }
+#status { position: fixed; bottom: 0; left: 0; right: 0; padding: 3px 10px; font-size: 11px; background: #12121f; color: #777; text-align: center; border-top: 1px solid #222; }
+#status.connected { color: #4caf50; }
+
+.bar-group { margin-bottom: 10px; }
+.bar-label { font-size: 12px; margin-bottom: 3px; display: flex; justify-content: space-between; }
+.bar-track { height: 18px; background: #1a1a2a; border-radius: 10px; overflow: hidden; border: 1px solid #2a2a3a; }
+.bar-fill { height: 100%; border-radius: 10px; transition: width 0.4s ease; }
+.bar-fill.hunger { background: linear-gradient(90deg, #c0392b, #e74c3c); }
+.bar-fill.sanity { background: linear-gradient(90deg, #7b2d8b, #a855c9); }
+.bar-fill.health { background: linear-gradient(90deg, #27ae60, #2ecc71); }
+
+.info-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0; }
+.info-chip { background: #1a1a2e; padding: 6px 12px; border-radius: 6px; font-size: 12px; border: 1px solid #2a2a3a; }
+.info-chip strong { color: #f0c040; }
+
+.boss-card { background: #1a1a2e; border-radius: 8px; padding: 10px 12px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #2a2a3a; }
+.boss-card .name { font-weight: 600; font-size: 13px; }
+.boss-card .meta { font-size: 11px; color: #888; margin-top: 2px; }
+.boss-status { font-size: 11px; padding: 3px 10px; border-radius: 12px; font-weight: 600; white-space: nowrap; }
+.boss-status.alive { background: #5c1a1a; color: #ff6b6b; }
+.boss-status.killed { background: #1a4a1a; color: #6bff6b; }
+.boss-status.unavailable { background: #2a2a3a; color: #888; }
+
+.recipe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.recipe-card { background: #1a1a2e; border-radius: 6px; padding: 8px; font-size: 11px; cursor: pointer; text-align: center; border: 1px solid #2a2a3a; transition: 0.15s; }
+.recipe-card:hover { background: #252540; border-color: #f0c040; }
+.recipe-card .rname { font-weight: 600; color: #f0c040; }
+.recipe-card .reffect { color: #aaa; margin-top: 2px; }
+
+.checklist-item { padding: 8px 10px; margin-bottom: 3px; background: #1a1a2e; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 12px; border: 1px solid #2a2a3a; transition: 0.15s; }
+.checklist-item:hover { border-color: #444; }
+.checklist-item .check { width: 16px; height: 16px; border: 2px solid #555; border-radius: 3px; flex-shrink: 0; background: transparent; transition: 0.15s; }
+.checklist-item.done { text-decoration: line-through; color: #666; }
+.checklist-item.done .check { background: #27ae60; border-color: #27ae60; }
+
+.guide-step { padding: 10px 12px; margin-bottom: 8px; background: #1a1a2e; border-radius: 8px; border-left: 3px solid #f0c040; font-size: 12px; line-height: 1.5; }
+.guide-step .step-day { font-size: 11px; color: #f0c040; font-weight: 600; margin-bottom: 3px; }
+
+select { background: #1a1a2e; color: #ddd; border: 1px solid #3a3a4a; padding: 6px 8px; border-radius: 4px; font-size: 12px; width: 100%; }
+select:focus { outline: none; border-color: #f0c040; }
+#crockpot-result { margin-top: 10px; padding: 12px; background: #1a1a2e; border-radius: 8px; font-size: 13px; border: 1px solid #2a2a3a; }
+#crockpot-result strong { color: #f0c040; }

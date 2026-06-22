@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="dragbar" onmousedown="startDrag(event)">⠿ Kéo để di chuyển — DST Overlay</div>
+<div id="app">
+  <div id="sidebar">
+    <div class="tab-btn active" data-tab="guide">Huong dan</div>
+    <div class="tab-btn" data-tab="stats">Chi so</div>
+    <div class="tab-btn" data-tab="bosses">Boss</div>
+    <div class="tab-btn" data-tab="crockpot">Crock Pot</div>
+    <div class="tab-btn" data-tab="base">Xay Base</div>
+    <div class="tab-btn" data-tab="characters">Nhan vat</div>
+  </div>
+  <div id="content">
+    <div id="tab-guide" class="tab-content active">
+      <h2>Huong dan theo mua</h2>
+      <div id="guide-controls" class="info-row" style="margin-bottom:8px;gap:4px">
+        <select id="guide-season" style="flex:1"></select>
+        <input type="number" id="guide-day" min="1" max="999" value="1" style="flex:0 0 55px;background:#1a1a2e;color:#ddd;border:1px solid #3a3a4a;padding:4px 6px;border-radius:4px;text-align:center">
+        <select id="guide-char" style="flex:1"></select>
+      </div>
+      <div id="guide-content"><p>Dang tai...</p></div>
+      <div id="guide-checklist" style="margin-top:12px"></div>
+    </div>
+    <div id="tab-stats" class="tab-content">
+      <h2>Chi so nhan vat</h2>
+      <div id="stats-content"></div>
+    </div>
+    <div id="tab-bosses" class="tab-content">
+      <h2>Theo doi Boss</h2>
+      <div id="boss-list"></div>
+    </div>
+    <div id="tab-crockpot" class="tab-content">
+      <h2>Crock Pot</h2>
+      <div id="crockpot-ui"></div>
+    </div>
+    <div id="tab-base" class="tab-content">
+      <h2>Hướng dẫn xây base</h2>
+      <div id="base-content"></div>
+    </div>
+    <div id="tab-characters" class="tab-content">
+      <h2>Danh sach nhan vat</h2>
+      <div id="char-list"></div>
+    </div>
+  </div>
+</div>
+<div id="status">DST Overlay san sang</div>
+<script src="app.js"></script>
+</body>
+</html>
