@@ -7,56 +7,28 @@ namespace DSTOverlay;
 
 public class MainForm : Form
 {
-    private NotifyIcon trayIcon;
-    private ContextMenuStrip trayMenu;
-    private OverlayForm overlayForm;
     private SidecarForm sidecarForm;
-    private bool sidecarVisible = false;
-    private static string statePath = Path.Combine(
-        Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-        "Klei", "DoNotStarveTogether", "DSTOverlay", "game-state.json");
 
     public MainForm()
     {
-        WindowState = FormWindowState.Minimized;
-        ShowInTaskbar = false;
+        Text = "DST Overlay Tool";
+        Width = 440;
+        Height = 720;
+        StartPosition = FormStartPosition.CenterScreen;
+        BackColor = Color.FromArgb(20, 20, 30);
+        Icon = SystemIcons.Application;
+        FormBorderStyle = FormBorderStyle.Sizable;
+        MinimumSize = new Size(350, 500);
 
-        overlayForm = new OverlayForm(statePath);
+        string statePath = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+            "Klei", "DoNotStarveTogether", "DSTOverlay", "game-state.json");
+
         sidecarForm = new SidecarForm(statePath);
-        overlayForm.Show();
-
-        trayMenu = new ContextMenuStrip();
-        trayMenu.Items.Add("Toggle Sidecar", null, (_, _) => ToggleSidecar());
-        trayMenu.Items.Add(new ToolStripSeparator());
-        trayMenu.Items.Add("Exit", null, (_, _) => ExitApp());
-
-        trayIcon = new NotifyIcon
-        {
-            Icon = SystemIcons.Application,
-            ContextMenuStrip = trayMenu,
-            Text = "DST Overlay",
-            Visible = true
-        };
-    }
-
-    private void ToggleSidecar()
-    {
-        sidecarVisible = !sidecarVisible;
-        if (sidecarVisible)
-        {
-            sidecarForm.Show();
-            overlayForm.Hide();
-        }
-        else
-        {
-            sidecarForm.Hide();
-            overlayForm.Show();
-        }
-    }
-
-    private void ExitApp()
-    {
-        trayIcon.Visible = false;
-        Application.Exit();
+        sidecarForm.TopLevel = false;
+        sidecarForm.FormBorderStyle = FormBorderStyle.None;
+        sidecarForm.Dock = DockStyle.Fill;
+        Controls.Add(sidecarForm);
+        sidecarForm.Show();
     }
 }

@@ -1,0 +1,98 @@
+const fs = require('fs');
+
+const chars = [
+{id:"wilson",n:"Wilson",d:"Dễ",hp:150,hu:150,sn:200,sk:"Mọc râu - cạo ra Beard Hair. Râu càng dài giữ ấm càng tốt.",
+cl:"CƠ CHẾ RÂU: 3 giai đoạn. GD1 (ngày 4): râu ngắn - giữ ấm 15s, cạo được 1 tóc. GD2 (ngày 8): râu dài - giữ ấm 45s, cạo được 3 tóc. GD3 (ngày 16): râu đẹp - giữ ấm 135s, cạo được 9 tóc. Mùa đông râu mọc nhanh hơn. Beard Hair dùng: (1) Đá hồi máu (Beard Hair + Đá lửa) hồi 20-25 HP. (2) Meat Effigy: 4 tóc + 40 HP max - hồi sinh khi chết.",
+tips:["Cạo râu ngày 4/8/16 - giai đoạn cuối cho 9 tóc + giữ ấm 135s","Râu mùa đông mọc nhanh - giữ ấm tốt hơn","Thịt tóc làm đá hồi máu + Meat Effigy","Nhân vật toàn diện - không điểm yếu"]},
+{id:"willow",n:"Willow",d:"Dễ",hp:150,hu:150,sn:120,sk:"Bật lửa vô hạn + Bernie. Miễn nhiễm sát thương lửa.",
+cl:"BẬT LỬA: vô hạn độ bền, đốt đuốc, đốt cây lấy than, đốt kẻ thù. BERNIE: gấu bông tự động biến lớn khi TT < 30%, tấn công kẻ thù, hồi TT cho Willow. TT 120 - thấp nhất game: cần hoa (+12 TT), nấm xanh nấu (+15 TT), mật ong (+15 TT).",
+tips:["Bật lửa vô hạn - thay đuốc, sưởi ấm, đốt kẻ thù","Bernie tự bảo vệ khi TT < 30%","TT 120 - luôn có hoa nấm hồi TT","Mùa hè lợi thế: không sợ lửa"]},
+{id:"wolfgang",n:"Wolfgang",d:"Trung bình",hp:200,hu:200,sn:200,sk:"3 trạng thái: Wimpy/Normal/Mighty. Tập tạ (Dumbbell) để Mighty.",
+cl:"MIGHTY (Đói 225-300): 2x sát thương, 200 HP, chạy nhanh. WIMPY (Đói 0-100): 0.75x ST, chạy chậm, sợ bóng tối + quái. Tập: Dumbbell (gỗ), Golden Dumbbell (vàng), Gembell (ngọc). Ăn gấp 1.5x người thường.",
+tips:["Giữ Đói 225-300 để Mighty: 2x sát thương","Tập Golden Dumbbell nhanh nhất","Sợ bóng tối khi Wimpy - luôn có đuốc","Ăn gấp rưỡi - cần 2 Crock Pot"]},
+{id:"wendy",n:"Wendy",d:"Dễ",hp:150,hu:150,sn:200,sk:"Abigail (em ma) + pha thuốc Ectoherbology. 0.75x ST gây ra.",
+cl:"ABIGAIL: gọi bằng hoa, nở ban đêm hoặc gần xác chết. Abigail đánh AoE. THUỐC: Spectral Cure-All (hồi Abigail 600 HP), Distilled Vengeance (phản 30% ST), Vigor Mortis (+50% ST Abigail). Wendy đánh 0.75x (yếu), bù bằng Abigail.",
+tips:["Abigail AoE farm nhện ong đầm lầy nhanh","Pha thuốc cho Abigail","Wendy đánh yếu - cần Abigail gánh boss","Hao TT chậm 0.75x - lợi thế ban đêm"]},
+{id:"wx78",n:"WX-78",d:"Trung bình",hp:125,hu:125,sn:150,sk:"Circuit - KHÔNG ăn Gear tăng stats. Scan sinh vật = Bio Data = Circuit.",
+cl:"LƯU Ý: WX-78 đã rework! KHÔNG ăn Gear tăng stats nữa. Dùng CIRCUIT (6 khe, mỗi 90s sạc 1 pin). Hardy (+50 HP), Super-Hardy (+150 HP), Processing (+40 TT), Super-Processing (+100 TT +2TT/ph), Beanbooster (5HP/30s). Ăn Gear: hồi 60TT+75Đói+50Máu (không tăng max). Ướt mất -3 đến -9 HP/s.",
+tips:["DÙNG Circuit - KHÔNG ăn Gear tăng stats","Scan sinh vật = Bio Data -> chế Circuit","Ướt = mất HP/s - cần chống ướt","Sét đánh +100 HP, Winona Generator sạc pin"]},
+{id:"wicker",n:"Wickerbottom",d:"Trung bình",hp:125,hu:150,sn:250,sk:"Biết hết recipes. Xuất bản sách. Mất ngủ. Dạ dày yếu.",
+cl:"Không cần Science Machine. SÁCH: Birds of the World (gọi chim), Horticulture (farm cây), On Tentacles (xúc tu bảo vệ), The End is Nigh (gọi sét), Sleepytime Stories (gây ngủ). Mất ngủ - không dùng được Tent. Cần hoa + nấm hồi TT. Dạ dày yếu: đồ ôi hồi ít.",
+tips:["Không cần Science Machine - tiết kiệm","Horticulture farm cấp tốc","Mất ngủ - cần hoa nấm hồi TT","Ăn đồ nấu chín - dạ dày yếu"]},
+{id:"wigfrid",n:"Wigfrid",d:"Trung bình",hp:200,hu:120,sn:120,sk:"Battle Spear+Helm từ đầu. 1.25x ST gây ra, nhận 0.75x ST. Hát. Chỉ ăn thịt.",
+cl:"Battle Spear (42.5 ST), Battle Helm (80% giảm). Đánh nhau hồi 25% ST thành máu+TT. HÁT: Weaponized Warble (+10%ST đồng đội), Heartrending Ballad (hồi máu), Clear Minded Cadenza (hồi TT). Chỉ ăn thịt!",
+tips:["Battle Spear+Helm từ ngày đầu","Đánh quái hồi máu - giao tranh liên tục","Hát buff đồng đội","Chỉ ăn thịt - cần nguồn thịt"]},
+{id:"woodie",n:"Woodie",d:"Trung bình",hp:150,hu:150,sn:200,sk:"Rìu Lucy + 3 biến hình: Werebeaver (cưa)/Weremoose (đánh)/Weregoose (chạy).",
+cl:"Lucy: chặt cây x1.25, vô hạn độ bền. Werebeaver: cưa cây đào đá farm siêu tốc. Weremoose: sừng húc, giẫm đạp, giảm ST. Weregoose: chạy+lướt nước. Kitschy Idol chủ động biến hình. Full Moon tự động biến.",
+tips:["Lucy chặt cây nhanh - vô hạn độ bền","Werebeaver farm gỗ, Weremoose đánh, Weregoose chạy","Kitschy Idol kiểm soát biến hình","Full Moon tự động biến - chuẩn bị trước"]},
+{id:"wanda",n:"Wanda",d:"Khó",hp:150,hu:150,sn:200,sk:"HP càng thấp ST càng cao. Alarming Clock đánh xa. Đồng hồ teleport.",
+cl:"Alarming Clock (1 gear+1 đồng) đánh xa. Backtrek Watch teleport về điểm đánh dấu. Rift Watch teleport đến đồng minh. HP 50% = x2 ST, HP 25% = x3 ST. Càng già (ngày càng nhiều) càng mạnh nhưng HP max giảm.",
+tips:["Alarming Clock đánh xa - an toàn","Backtrek Watch teleport","HP 50% = x2 ST, 25% = x3 - đánh đổi","Càng già càng mạnh nhưng HP giảm"]},
+{id:"wurt",n:"Wurt",d:"Khó",hp:150,hu:150,sn:200,sk:"Người ếch. Merm King. Merm lính. Chỉ ăn rau+cá. Không sợ ẩm.",
+cl:"Merm King: xây trong đầm lầy. Merm lính giúp farm + bảo vệ. Không sợ ẩm - lợi thế mùa xuân. Chỉ ăn rau+cá. Cần Farm Soil + Fish Farm.",
+tips:["Xây Merm King sớm - Merm lính giúp farm","Chỉ ăn rau+cá - trồng+câu","Không sợ ẩm - xuân lợi thế","Merm King càng to càng nhiều lính"]},
+{id:"wortox",n:"Wortox",d:"Trung bình",hp:150,hu:150,sn:200,sk:"Quỷ - Soul Hop dịch chuyển. Linh hồn = máu. Hồi máu đồng đội.",
+cl:"Soul Hop: nhảy qua sông vách đá. Thu thập linh hồn từ xác chết. Ăn linh hồn: +20 HP, -5 TT (tối đa 5 cái/lần = +100 HP). Hồi máu đồng đội: kéo thả linh hồn. Không ăn được thức ăn thường. Đói luôn 150. Chết nếu hết linh hồn.",
+tips:["Soul Hop di chuyển nhanh - vượt mọi địa hình","Luôn giữ 5+ linh hồn - không có = chết","Linh hồn hồi +20HP -5TT, hồi đồng đội","Không ăn thức ăn - chỉ sống bằng linh hồn"]},
+{id:"wormwood",n:"Wormwood",d:"Trung bình",hp:150,hu:150,sn:200,sk:"Cây - trồng hạt không cần cuốc. Phân = HP. Sợ lửa x3.",
+cl:"Trồng hạt trực tiếp xuống đất. Phân bón hồi HP + thúc cây. Compost Wrap hồi 40 HP. Bramble Husk: giáp phản đòn. Bramble Trap: bẫy AoE. Lửa: ST x3 - mùa hè xuống hang. Mùa xuân mưa tự hồi HP.",
+tips:["Trồng cây không cần cuốc","Phân bón hồi HP + thúc cây","ST lửa x3 - mùa hè xuống hang","Mùa xuân hồi máu nhờ mưa"]}
+];
+
+const guide = [
+{s:"autumn",d1:1,d2:2,t:"Ngày 1-2: KHỞI ĐẦU. Nhặt 20 Cỏ + 20 Cành + 10 Đá lửa + 10 Quả mọng. Chặt 3 cây -> 12-15 Gỗ. Chế Rìu (2 cành+2 đá), Cuốc (2 cành+2 đá), Đuốc (2 cành+1 cỏ). Khi trời tối, đốt Campfire (2 gỗ+3 cỏ). Thám hiểm dọc bờ biển. Tránh Đầm lầy."},
+{s:"autumn",d1:3,d2:4,t:"Ngày 3-4: TÌM BASE. Gần nước (ao/sông), gần rừng+núi đá, gần Pig Village, đất bằng. Xây Fire Pit (2 đá+12 gỗ). 2 Chest (3 gỗ/cái). Bẫy Thỏ (Trap: 6 cành). Ba lô (4 cỏ+4 cành)."},
+{s:"autumn",d1:5,d2:6,t:"Ngày 5-6: VÀNG. Núi đá đập đá vàng bằng Cuốc. Science Machine (1 vàng+4 gỗ+4 đá). Chế: Xẻng (2 cành+2 đá), Búa (3 cành+6 đá), Giáo (2 cành+2 đá+4 gỗ), Áo gỗ (8 gỗ+2 cỏ)."},
+{s:"autumn",d1:7,d2:8,t:"Ngày 7-8: ALCHEMY + CROCK POT. Alchemy Engine (4 vàng+2 gỗ+2 đá). Crock Pot (3 gỗ+6 đá+2 than). 3 Drying Rack (3 gỗ+3 than+3 cỏ). Bẫy nhện quanh tổ."},
+{s:"autumn",d1:9,d2:10,t:"Ngày 9-10: LỒNG CHIM. Bird Cage (2 vàng+2 lụa+8 cành). Thả thịt quái -> chim đẻ trứng. Meatballs: 1 thịt+3 băng = +62.5 Đói. Bacon&Eggs: 2 trứng+2 thịt = +75 Đói+20 Máu."},
+{s:"autumn",d1:11,d2:13,t:"Ngày 11-13: CHUẨN BỊ ĐÔNG. Mùa đông ngày 21. Thermal Stone (10 đá+3 đá lửa+1 đá tím). Ice Box (1 gear+2 đá+4 ván). Mũ ấm (Winter Hat/Beeffalo Hat). 60+ gỗ, 20+ thịt khô. Giết Koalefant (theo dấu chân)."},
+{s:"autumn",d1:14,d2:16,t:"Ngày 14-16: CỦNG CỐ. Đèn lồng (2 đom đóm+3 cành). Mũ thợ mỏ (1 đom đóm+1 vỏ+2 vàng). Bee Box cách base 10-15 ô. Farm Soil trồng rau."},
+{s:"autumn",d1:17,d2:18,t:"Ngày 17-18: BEARGER (ngày 20-25). Cách 1: dẫn vào rừng farm gỗ. Cách 2: 2 hit -> né quét. Chuẩn bị 2 Áo gỗ + Dăm bông."},
+{s:"autumn",d1:19,d2:20,t:"Ngày 19-20: KIỂM TRA. Thermal? Mũ ấm? Ice Box? 60 gỗ? 20 thịt khô? Ngày 21 là mùa đông!"},
+{s:"winter",d1:21,d2:24,t:"Ngày 21-24 (Đông 1-4): GIỮ ẤM. Thermal Stone hơ lửa -> cầm ra ngoài. Đốt lửa to ban đêm. Săn chim cánh cụt (trứng), mèo rừng. Meatballs: 1 thịt+3 băng. Đào 40+ băng."},
+{s:"winter",d1:25,d2:28,t:"Ngày 25-28 (Đông 5-8): MacTusk + DEERCLOPS. MacTusk -> Răng (Tooth Trap) + Tam o Shanter (+6.7TT/ph). DEERCLOPS ngày 30+: 2 hit -> né. 2 Áo gỗ + Mũ bóng đá + Dăm bông + 10 thuốc. Rơi 8 Thịt + Mắt -> Eyebrella."},
+{s:"winter",d1:29,d2:31,t:"Ngày 29-31 (Đông 9-12): CHUẨN BỊ XUÂN. Mũ mưa (4 da thỏ+2 dầu+2 cành) hoặc Ô. Cột thu lôi (1 vàng+4 đá). Lau sậy ở đầm lầy."},
+{s:"spring",d1:32,d2:35,t:"Ngày 32-35 (Xuân 1-4): MƯA. Chống ướt + cột thu lôi. Săn ếch -> Froggle Bunwich (+20 Máu). Moose/Goose ngày 37+."},
+{s:"spring",d1:36,d2:40,t:"Ngày 36-40 (Xuân 5-9): MOOSE/GOOSE. Né lao sang bên -> 3 hit. <50% gọi Mossling. Rơi 4 Thịt+3 Dùi trống+Lông vũ."},
+{s:"spring",d1:41,d2:45,t:"Ngày 41-45 (Xuân 10-14): THUYỀN. Row Boat (6 gỗ+4 dây+3 đồng). Đảo Mặt Trăng -> Celestial Orb. Endothermic Fire Pit cho mùa hè."},
+{s:"summer",d1:46,d2:50,t:"Ngày 46-50 (Hè 1-5): NÓNG 80°C. Endothermic Fire Pit (2 đá+4 đá lửa+2 đá cuội). Thermal Stone hơ lửa xanh. Antlion: cho đồ chơi hoặc giết."},
+{s:"summer",d1:51,d2:56,t:"Ngày 51-56 (Hè 6-12): HANG. Xuống hang tránh nóng. Tàn tích -> Ancient Station. Nấm xanh luộc (+20 máu, -10 TT)."},
+{s:"summer",d1:57,d2:60,t:"Ngày 57-60 (Hè 13-16): ENDGAME. Fuelweaver (Atrium). Weather Pain + Nightmare Amulet + Lazy Explorer. Crab King: ngọc trai + bom. Celestial Champion: 3 phase."}
+];
+
+const boss = [
+{id:"deerclops",n:"Deerclops",s:"Mùa đông (30+)",l:"Mặt đất",t:"HP 4000. AoE phá công trình. Đợi nó đập (tay giơ) -> né -> 2 hit -> lui. 2 Áo gỗ + Mũ bóng đá + Dăm bông + 10 thuốc. Rơi 8 Thịt + Mắt -> Eyebrella."},
+{id:"bearger",n:"Bearger",s:"Mùa thu (20-25)",l:"Mặt đất",t:"HP 6000. Dẫn vào rừng farm gỗ. Hoặc 2 hit -> né quét. Rơi 8 Thịt + Lông -> Bearger Vest (240s + hao đói chậm 25%)."},
+{id:"moose",n:"Moose/Goose",s:"Mùa xuân (37+)",l:"Gần nước",t:"HP 3000. Né lao sang bên -> 3 hit. <50% gọi Mossling. Rơi 4 Thịt + 3 Dùi trống + Lông vũ."},
+{id:"dragonfly",n:"Dragonfly",s:"Mùa hè",l:"Lava Arena",t:"HP 27500. KHÓ. 2 Áo gỗ + Mũ bóng đá + 20 thuốc. Ngủ khi không ai gần. Phun lửa + bay đập. Rơi 8 Thịt + Vảy -> Scalemail."},
+{id:"beequeen",n:"Bee Queen",s:"Bất kỳ",l:"Rừng ong",t:"HP 22500. CỰC KHÓ. 3 Áo gỗ + 2 Mũ + 30 thuốc. Gọi ong vô hạn. Rơi Royal Jelly (250HP+150TT) + Bundling Wrap."},
+{id:"klaus",n:"Klaus",s:"Mùa đông",l:"Mặt đất",t:"HP 5000. Cần Deer Antler. P1: Klaus+2 hươu. P2: xuống ngựa. Rơi Thịt + ngọc + blueprint."},
+{id:"antlion",n:"Antlion",s:"Mùa hè",l:"Oasis",t:"HP 3000. Cách A: đồ chơi Oasis. Cách B: 3 hit -> né. Rơi 4 Thịt + Đồ trang sức."},
+{id:"toadstool",n:"Toadstool",s:"Bất kỳ",l:"Hang động",t:"HP 15000. Bào tử độc (gas) - cần Mặt nạ khí. Rơi 8 Thịt + Bào tử."},
+{id:"malbatross",n:"Malbatross",s:"Bất kỳ",l:"Đại dương",t:"HP 5000. Súng lao từ thuyền. Máu thấp bay nhanh. Rơi 8 Thịt + Mỏ -> thuyền 15%."},
+{id:"stalker",n:"Ancient Fuelweaver",s:"Bất kỳ",l:"Atrium",t:"HP 16000. CẦN: Weather Pain (phá khiên) + Nightmare Amulet (đánh xuyên) + Lazy Explorer (teleport). P1 phá 3 khiên. P2 đánh lúc hút TT."},
+{id:"minotaur",n:"Ancient Guardian",s:"Bất kỳ",l:"Ruins",t:"HP 2500. 1-2 hit -> né. Rơi Guardian Horn."},
+{id:"crabking",n:"Crab King",s:"Bất kỳ",l:"Đại dương",t:"HP 15000. Cần ngọc trai (Crabby Hermit). Bom phá vỏ -> đánh thân. Rơi 8 Thịt."}
+];
+
+const base = [
+{s:"1. Chọn vị trí",t:"Gần nước (ao/sông), gần rừng+núi đá, gần Pig Village, đất bằng phẳng. Tránh đầm lầy, tránh tổ ong sát thủ."},
+{s:"2. Bố trí cơ bản",t:"Fire Pit trung tâm. Chest+Ice Box+Crock Pot cạnh nhau. Bố trí hình tròn hoặc chữ L."},
+{s:"3. Mở rộng",t:"Alchemy Engine + 3 Drying Rack + Bird Cage + Lightning Rod + 8-10 Farm Soil + Bee Box."},
+{s:"4. Phân khu",t:"Sinh hoạt (Fire+Chest+Ice+Crock+Alchemy) + Nông trại + Kho gỗ + Phòng thủ (20+ Tooth Trap)."},
+{s:"5. Mùa đông",t:"Ice Box bắt buộc. 60+ gỗ. Drying Rack trong nhà. Thịt khô dự trữ. Chim cánh cụt cho trứng."},
+{s:"6. Mùa hè / Hang",t:"Xuống hang (gần cầu thang). Base phụ: Pit+Chest+Ice Box+Endothermic Fire Pit."},
+{s:"7. Nâng cao",t:"Thảm cỏ (đi nhanh), đèn đường, tường đá, 20 Tooth Trap, Pig House gần base."}
+];
+
+fs.writeFileSync('E:/code/DST-Overlay/DSTOverlay/wwwroot/data/content.json', JSON.stringify({chars,guide,boss,base,
+checklist:{autumn:[
+{t:"[Ưu tiên 1] Nhặt 20 Cỏ + 20 Cành + 10 Đá lửa + 10 Quả mọng",a:""},{t:"[Ưu tiên 1] 3 cây -> Rìu+Cuốc+Đuốc",a:""},{t:"[Ưu tiên 1] Đốt lửa tối",a:""},{t:"[Ưu tiên 2] Chọn đất base",a:""},{t:"[Ưu tiên 2] Fire Pit+Chest+Ba lô",a:""},{t:"[Ưu tiên 2] Bẫy thỏ+Vàng->Science",a:""},{t:"[Ưu tiên 2] Xẻng+Búa+Giáo+Áo gỗ",a:""},{t:"[Ưu tiên 3] Alchemy+Crock Pot+3 Drying",a:""},{t:"[Ưu tiên 3] Bẫy nhện+lồng chim",a:""},{t:"[Ưu tiên 4] Ice Box+Thermal+Mũ ấm",a:"winter"},{t:"[Ưu tiên 4] 60 gỗ+20 thịt khô",a:""},{t:"[CẢNH BÁO] Bearger 20-25!",a:"bearger"},{t:"[CẢNH BÁO] Mùa đông ngày 21!",a:""}
+],winter:[
+{t:"Giữ ấm: Thermal+lửa+đồ ấm",a:""},{t:"Đào 40+ băng",a:""},{t:"Săn MacTusk -> Răng+Tam",a:""},{t:"[CẢNH BÁO] Deerclops 30+!",a:"deerclops"},{t:"Xuống Hang tìm bánh răng",a:""},{t:"Mũ mưa+Cột thu lôi chuẩn bị xuân",a:""}
+],spring:[
+{t:"Chống ướt: Mũ mưa/Ô/Eyebrella",a:""},{t:"Cột thu lôi",a:""},{t:"[CẢNH BÁO] Moose/Goose 37+!",a:"moose"},{t:"Thuyền -> Đảo Mặt Trăng",a:""},{t:"Endothermic Fire Pit chuẩn bị hè",a:""}
+],summer:[
+{t:"Endothermic Fire Pit",a:""},{t:"Antlion (đồ chơi/giết)",a:""},{t:"Xuống hang tránh nóng",a:""},{t:"Fuelweaver+Celestial",a:"stalker"},{t:"Crab King",a:""}
+]}}),'utf8');
+console.log('Done: content.json with full Vietnamese');
