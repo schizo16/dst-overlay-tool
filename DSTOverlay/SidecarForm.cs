@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Microsoft.Web.WebView2.WinForms;
 
@@ -12,6 +13,14 @@ public class SidecarForm : Form
     private WebView2 webView;
     private FileSystemWatcher watcher;
     private string statePath;
+
+    [DllImport("user32.dll")]
+    private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+    [DllImport("user32.dll")]
+    private static extern bool ReleaseCapture();
+    private const int WM_NCLBUTTONDOWN = 0xA1;
+    private const int HTCAPTION = 0x2;
+    private void DragMove() { ReleaseCapture(); SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0); }
 
     public SidecarForm(string statePath)
     {
@@ -29,6 +38,8 @@ public class SidecarForm : Form
         webView.EnsureCoreWebView2Async().ContinueWith(_ =>
         {
             webView.CoreWebView2.Settings.IsWebMessageEnabled = true;
+            webView.CoreWebView2.WebMessageReceived += (_, args) =>
+            { if (args.TryGetWebMessageAsString() == "drag") DragMove(); };
             string dir = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "wwwroot");
             webView.CoreWebView2.SetVirtualHostNameToFolderMapping(
                 "dst.local", dir, Microsoft.Web.WebView2.Core.CoreWebView2HostResourceAccessKind.Allow);
